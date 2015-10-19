@@ -16,13 +16,3 @@ class CreateSeattlegovCitywideEventRecords
     end
   end
 end
-
-
-# stuff.each do |h|
-#   begin
-#     Model.create(h)
-#   rescue ActiveRecord::RecordNotUnique => e
-#     next if(e.message =~ /unique.*constraint.*INDEX_NAME_GOES_HERE/)
-#     raise
-#   end
-# end
