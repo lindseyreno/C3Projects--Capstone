@@ -3,4 +3,6 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :title, :location, :date
   validates :title, uniqueness: { scope: [:date, :location] }
+
+  scope :todays_events, -> { where(:date => Date.current) }
 end
