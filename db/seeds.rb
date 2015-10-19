@@ -29,7 +29,7 @@ categories = [
   { name: "Local Government" },
   { name: "City Council Meetings" },
   { name: "Pets" },
-  { name: "Music " },
+  { name: "Music" },
   { name: "Boards and Commissions" },
   { name: "Community" },
   { name: "Transportation" },
@@ -114,7 +114,16 @@ events = [
 ]
 
 events.each do |event|
-  Event.create(event)
-  created_event = Event.find_by(event)
-  AssignCategories.assign_categories(created_event)
+  begin
+    Event.create(event)
+  rescue ActiveRecord::RecordNotUnique
+    next
+  end
+  begin
+    if created_event = Event.find_by(event)
+      AssignCategories.assign_categories(created_event)
+    end
+  rescue ActiveRecord::RecordNotUnique
+    next
+  end
 end
