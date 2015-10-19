@@ -43,6 +43,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    birch (0.0.9)
     builder (3.2.2)
     byebug (6.0.2)
     coderay (1.1.0)
@@ -86,6 +87,7 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.3)
+    progressbar (0.21.0)
     pry (0.10.2)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -138,6 +140,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    rubyzip (0.9.9)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -145,6 +148,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    schiphol (1.0.1)
+      progressbar (>= 0.10.0)
+      rubyzip (~> 0.9.9)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -164,6 +170,10 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    treat (2.1.0)
+      birch
+      schiphol
+      yomu
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -176,6 +186,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    yomu (0.1.5)
 
 PLATFORMS
   ruby
@@ -196,6 +207,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simplecov
   spring
+  treat
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
