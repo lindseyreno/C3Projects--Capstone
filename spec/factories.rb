@@ -1,7 +1,9 @@
-FactoryGirl.define do  factory :user do
-    username "MyText"
-email "MyText"
-password_digest "MyText"
+FactoryGirl.define do
+  factory :user do
+    username "sam"
+    email "user@user.com"
+    password "user_password"
+    password_confirmation "user_password"
   end
 
   factory :event do
