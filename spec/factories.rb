@@ -1,4 +1,9 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :user do
+    username "MyText"
+email "MyText"
+password_digest "MyText"
+  end
+
   factory :event do
     title "Climb for Clean Air Info Session"
     date "2015-10-24"
