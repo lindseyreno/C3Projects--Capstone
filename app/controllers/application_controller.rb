@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
     sign_in_required: "You must be signed in to view this page.",
     account_exists: "You already have an account.", # maybe change this to ask if this is the user signed in? if not, allow them to sign out
     unsuccessful_sign_up: "There was a problem with your sign up info. Please try again.",
-    unsuccessful_save: "Could not save. Please check the information and try again."
+    unsuccessful_save: "Could not save. Please check the information and try again.",
+    invalid_activation: "Invalid activation link",
+    unactivated_account: "Account not activated. Check your email for the activation link."
   }
 
   def require_sign_in
