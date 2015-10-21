@@ -20,6 +20,7 @@
 	<% else %>
     Hello, <%= @user.username %>
     <%= link_to "Sign Out", sign_out_path, method: :delete %>
+    <%= link_to "Edit Profile", edit_user_path(@user.id) %>
 	<% end %>
 
 <h2>Today's Events</h2>
