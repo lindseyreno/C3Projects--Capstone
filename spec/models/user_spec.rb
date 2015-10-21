@@ -50,4 +50,20 @@ RSpec.describe User, type: :model do
       expect(user.errors.keys).to include(:password)
     end
   end
+
+  describe "methods" do
+    describe "#authenticated?" do
+      it "returns false for a user with nil digest" do
+        user = create :user
+
+        expect(user.authenticated?(:activation, "")).to eq false
+      end
+
+      it "returns true if the activation_token matches the activation_digest" do
+        user = create :user
+
+        expect(user.authenticated?(:activation, user.activation_token)).to eq true
+      end
+    end
+  end
 end
