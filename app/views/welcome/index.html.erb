@@ -1,5 +1,28 @@
-<h1>Welcome to My Seattle Events</h1>
+<h1>My Seattle Events</h1>
+
+<% if session[:user_id].nil? %>
+  <%= form_for(:session, url: sign_in_path)  do |f| %>
+    <fieldset>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+
+	      <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+
+    <%= f.submit "Sign In" %>
+    </fieldset>
+  <% end %>
+
+  <%= link_to "Sign up", new_user_path %>
+
+	<% else %>
+    Hello, <%= @user.username %>
+    <%= link_to "Sign Out", sign_out_path, method: :delete %>
+	<% end %>
+
+<h2>Today's Events</h2>
 <% @events.each do |event| %>
   <p><%= event.title %></p>
-  <p><%= event.date %></p>
 <% end %>
