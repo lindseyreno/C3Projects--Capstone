@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       UserMailer.account_activation(@user).deliver_now
       redirect_to root_path
     else
-      flash.now[:errors] = ERRORS[:unsuccessful_signup]
+      flash.now[:errors] = ERRORS[:unsuccessful_sign_up]
       render :new
     end
   end
