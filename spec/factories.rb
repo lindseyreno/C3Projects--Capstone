@@ -4,6 +4,8 @@ FactoryGirl.define do
     email "user@user.com"
     password "user_password"
     password_confirmation "user_password"
+    activated true
+    activated_at "#{Time.zone.now}"
   end
 
   factory :event do
