@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "/sign_in", to: "sessions#create"
   delete "/sign_out", to: "sessions#destroy", as: "sign_out"
 
+  resources :account_activations, only: [:edit]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
