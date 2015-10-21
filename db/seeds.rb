@@ -129,10 +129,10 @@ events.each do |event|
 end
 
 10.times do |n|
-  name  = Faker::Name.name
+  username  = "user#{n+1}"
   email = "user-#{n+1}@example.com"
   password = "password#{n+1}"
-  User.create!(name:  name,
+  User.create(username:  username,
                email: email,
                password:              password,
                password_confirmation: password,
