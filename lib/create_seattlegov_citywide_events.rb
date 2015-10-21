@@ -1,4 +1,4 @@
-class CreateSeattlegovCitywideEventRecords
+class CreateSeattlegovCitywideEvents
   def self.create_seattlegov_citywide_events
     ParseSeattlegovCitywide.parse_rss.each do |event|
       begin

@@ -1,10 +1,10 @@
-require 'create_seattlegov_citywide_event_records'
+require 'create_seattlegov_citywide_events'
 require 'parse_seattlegov_citywide'
-require 'create_category_associations'
+require 'assign_categories'
 
 namespace :events do
   desc 'Creates new events and associates categories from seattlegov city wide RSS feed'
   task create_seattlegov_citywide: :environment do
-    CreateSeattlegovCitywideEventRecords.create_seattlegov_citywide_events
+    CreateSeattlegovCitywideEvents.create_seattlegov_citywide_events
   end
 end
