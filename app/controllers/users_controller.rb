@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_sign_in, only: [:edit]
+  before_action :require_sign_in, only: [:edit, :edit_preferences]
   before_action :set_user, only: [:edit, :edit_preferences]
 
   def new
