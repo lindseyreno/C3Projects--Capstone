@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_sign_in, only: [:edit]
-  before_action :set_user, only: [:edit]
+  before_action :set_user, only: [:edit, :edit_preferences]
 
   def new
     if session[:user_id].nil?
@@ -23,8 +23,31 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
+  def edit; end
+
+  def update
+    # TODO: make this so you update one part at a time if the user is signed in
+  end
+
+  def edit_preferences
+    @categories = Category.all
+  end
+
+  def update_preferences
+    if params[:user] == nil
+      @user.categories = []
+    else
+      updated_categories = []
+      params[:user][:category_ids].each do |category_id|
+        updated_categories << Category.find(category_id)
+        @user.categories = updated_categories
+      end
+    end
+    redirect_to root_path
+
+    # update the email newsletter schedule -- radio buttons for this
+      # have the radio button for their current schedule marked so that
+      # they can change it
   end
 
   private
