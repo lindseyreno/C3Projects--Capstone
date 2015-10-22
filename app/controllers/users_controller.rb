@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_sign_in, only: [:edit]
+  before_action :set_user, only: [:edit]
+
   def new
     if session[:user_id].nil?
       @user = User.new
