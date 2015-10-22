@@ -26,4 +26,9 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:user_id]) unless session[:user_id].nil?
     flash[:error] = ERRORS[:sign_in_required]
   end
+
+  def set_user
+    @user = User.find(session[:user_id])
+    redirect_to root_path(@user) unless params[:id].to_i == @user.id
+  end
 end
