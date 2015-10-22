@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :activation_token
   before_create :create_activation_digest
   has_secure_password
+  has_and_belongs_to_many :categories
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
