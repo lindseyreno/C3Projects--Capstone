@@ -1,0 +1,24 @@
+<h1>Edit Preferences</h1>
+<%= form_for @user, url: { action: "update_preferences" }  do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <% @categories.each do |category| %>
+        <% unless @user.categories.include?(category) %>
+            <%= check_box_tag "user[category_ids][]", category.id %>
+            <%= label_tag :name, "#{category.name}" %>
+        <% else %>
+            <%= check_box_tag "user[category_ids][]", category.id, checked = true %>
+            <%= label_tag :name, "#{category.name}" %>
+        <% end %>
+      <% end %>
+    </div>
+  </fieldset>
+  <%= f.submit "Update Preferences" %>
+<% end %>
+
+
+
+<%#= hidden_field_tag "user[category_ids][]", nil %>
+<%# Category.all.each do |category| %>
+  <%#= check_box_tag :category_ids, category.id, @user.categories.include?(category), :name => 'user[category_ids][]' %>
+<%# end %>
