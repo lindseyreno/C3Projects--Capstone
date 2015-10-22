@@ -124,4 +124,59 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  describe "GET #edit_preferences" do
+    context "the signed in user is editing their own preferences" do
+      before :each do
+        user = create :user
+        session[:user_id] = user.id
+        get :edit_preferences, id: user
+      end
+
+      it "returns successfully with an HTTP 200 status code" do
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
+
+      it "renders the edit_preferences view" do
+        expect(response).to render_template("edit_preferences", session[:user_id])
+      end
+    end
+
+    context "the signed in user is trying to edit another user's preferences" do
+      before :each do
+        user = create :user
+        user1 = create :user, username: "sammy", email: "user1@user1.com"
+        session[:user_id] = user.id
+        get :edit_preferences, id: user1
+      end
+
+      it "returns with an HTTP 302 status code" do
+        expect(response).to have_http_status(302)
+      end
+
+      it "redirects to the home page" do
+        expect(subject).to redirect_to(root_path)
+      end
+    end
+
+    context "attempting to edit a user's preferences when not signed in" do
+      before :each do
+        user = create :user
+        get :edit_preferences, id: user
+      end
+
+      it "returns with an HTTP 302 status code" do
+        expect(response).to have_http_status(302)
+      end
+
+      it "redirects to the home page" do
+        expect(subject).to redirect_to(root_path)
+      end
+
+      it "flashes an error message" do
+        expect(flash[:errors]).to include("You must be signed in to view this page.")
+      end
+    end
+  end
 end
