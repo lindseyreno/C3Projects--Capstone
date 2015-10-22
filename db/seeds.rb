@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'create_category_associations'
+require 'assign_categories'
 
 categories = [
   { name: "Sports and Recreation" },
@@ -138,4 +138,8 @@ end
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+end
+
+User.all.each do |user|
+  user.categories << Category.all.sample(rand(0..3))
 end
