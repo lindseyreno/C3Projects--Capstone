@@ -179,4 +179,47 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  describe "PATCH #update_preferences" do
+    describe "user not signed in" do
+      before :each do
+        user = create :user
+        patch :update_preferences, id: user
+      end
+
+      it "redirects to the home page" do
+        expect(subject).to redirect_to(root_path)
+      end
+
+      it "flashes an error message" do
+        expect(flash[:errors]).to include("You must be signed in to view this page.")
+      end
+    end
+
+    describe "user signed in" do
+      before :each do
+        @user = create :user
+        @category = create :category
+        @user.categories = [@category]
+        session[:user_id] = @user.id
+      end
+
+      it "unassociates the user from all categories when no checkboxes are checked" do
+        patch :update_preferences, id: @user
+        @user = assigns(:user)
+
+        expect(@user.categories).to eq []
+      end
+
+      it "associates a category with the user when a checkbox is checked" do
+        category2 = create :category, name: "Film"
+
+        patch :update_preferences, id: @user, user: { category_ids: [@category.id, category2.id] }
+        @user = assigns(:user)
+
+        expect(@user.categories.length).to eq 2
+        expect(@user.categories).to include(category2)
+      end
+    end
+  end
 end
