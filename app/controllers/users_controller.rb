@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_sign_in, only: [:edit, :edit_preferences]
-  before_action :set_user, only: [:edit, :edit_preferences]
+  before_action :require_sign_in, only: [:edit, :edit_preferences, :update_preferences]
+  before_action :set_user, only: [:edit, :edit_preferences, :update_preferences]
 
   def new
     if session[:user_id].nil?
