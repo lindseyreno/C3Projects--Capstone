@@ -143,3 +143,25 @@ end
 User.all.each do |user|
   user.categories << Category.all.sample(rand(0..3))
 end
+
+schedules = [
+  { :name => "Every Day",
+    :description => "Contains events for the next day, sent every day."
+  },
+  { :name => "Just the Weekend",
+    :description => "Contains events for the upcoming Friday, Saturday and Sunday, sent every Wednesday."
+  },
+  { :name => "This Week",
+    :description => "Contains events for the whole week, sent every Sunday."
+  },
+  { :name => "Every Two Weeks",
+    :description => "Contains events for the next two weeks, sent on Sunday every other week."
+  },
+  { :name => "This Month",
+    :description => "Contains events for the next month, sent on the last day of the month."
+  }
+]
+
+schedules.each do |schedule|
+  Schedule.create(schedule)
+end
