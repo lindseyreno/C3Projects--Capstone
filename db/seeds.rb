@@ -132,12 +132,14 @@ end
   username  = "user#{n+1}"
   email = "user-#{n+1}@example.com"
   password = "password#{n+1}"
+  schedule = Schedule.all.sample.id
   User.create(username:  username,
                email: email,
                password:              password,
                password_confirmation: password,
                activated: true,
-               activated_at: Time.zone.now)
+               activated_at: Time.zone.now,
+               schedule_id: schedule)
 end
 
 User.all.each do |user|
