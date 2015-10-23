@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :schedule do
+    name "Everyday"
+    description "Contains events for the next day, sent every day."
+  end
+
   factory :user do
     username "sam"
     email "user@user.com"
