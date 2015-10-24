@@ -9,15 +9,6 @@ RSpec.describe Schedule, type: :model do
         schedule.valid?
         expect(schedule.errors.keys).to include(:name)
       end
-
-      it "requires name to be unique" do
-        create :schedule
-        schedule = build :schedule
-
-        schedule.valid?
-        expect(Schedule.count).to be 1
-        expect(schedule.errors.keys).to include(:name)
-      end
     end
 
     describe "description validations" do
@@ -25,15 +16,6 @@ RSpec.describe Schedule, type: :model do
         schedule = build :schedule, description: nil
 
         schedule.valid?
-        expect(schedule.errors.keys).to include(:description)
-      end
-
-      it "requires description to be unique" do
-        create :schedule
-        schedule = build :schedule
-
-        schedule.valid?
-        expect(Schedule.count).to be 1
         expect(schedule.errors.keys).to include(:description)
       end
     end
