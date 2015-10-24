@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :schedule do
-    name "Everyday"
+    name "Every Day"
     description "Contains events for the next day, sent every day."
   end
 
@@ -11,6 +11,7 @@ FactoryGirl.define do
     password_confirmation "user_password"
     activated true
     activated_at "#{Time.zone.now}"
+    schedule
   end
 
   factory :event do
