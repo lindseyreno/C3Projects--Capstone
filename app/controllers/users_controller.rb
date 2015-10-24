@@ -31,23 +31,21 @@ class UsersController < ApplicationController
 
   def edit_preferences
     @categories = Category.all
+    @schedules = Schedule.all
   end
 
   def update_preferences
-    if params[:user] == nil
-      @user.categories = []
-    else
-      updated_categories = []
-      params[:user][:category_ids].each do |category_id|
-        updated_categories << Category.find(category_id)
-        @user.categories = updated_categories
+    @user.update_attribute(:schedule_id, params[:schedule_id])
+      if params[:user] == nil
+        @user.categories = []
+      else
+        updated_categories = []
+        params[:user][:category_ids].each do |category_id|
+          updated_categories << Category.find(category_id)
+          @user.categories = updated_categories
+        end
       end
-    end
     redirect_to root_path
-
-    # update the email newsletter schedule -- radio buttons for this
-      # have the radio button for their current schedule marked so that
-      # they can change it
   end
 
   private
