@@ -13,6 +13,18 @@
       <% end %>
     </div>
   </fieldset>
+
+  <fieldset>
+    <% @schedules.each do |schedule| %>
+      <% unless @user.schedule_id == schedule.id %>
+        <%= radio_button_tag :schedule_id, "#{schedule.id}"%>
+        <%= label_tag :schedule_id, "#{schedule.name}"%>
+      <% else %>
+        <%= radio_button_tag :schedule_id, "#{schedule.id}", checked = true %>
+        <%= label_tag :schedule_id, "#{schedule.name}"%>
+      <% end %>
+    <% end %>
+  </fieldset>
   <%= f.submit "Update Preferences" %>
 <% end %>
 
