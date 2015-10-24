@@ -220,6 +220,16 @@ RSpec.describe UsersController, type: :controller do
         expect(@user.categories.length).to eq 2
         expect(@user.categories).to include(category2)
       end
+
+      it "associates a schedule with a user" do
+        schedule = create :schedule
+
+        patch :update_preferences, id: @user, schedule_id: schedule.id
+        @user = assigns(:user)
+
+        expect(@user.schedule_id).to eq schedule.id
+        expect(Schedule.find(@user.schedule_id).name).to eq "Every Day"
+      end
     end
   end
 end
