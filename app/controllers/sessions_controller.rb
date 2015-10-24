@@ -7,15 +7,13 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       if @user.activated?
         session[:user_id] = @user.id
-        redirect_to root_path
       else
         flash[:errors] = ERRORS[:unactivated_account]
-        redirect_to root_path
       end
     else
       flash[:errors] = ERRORS[:sign_in_error]
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def destroy

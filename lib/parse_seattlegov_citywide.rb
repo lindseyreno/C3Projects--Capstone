@@ -38,33 +38,37 @@ class ParseSeattlegovCitywide
       nokogiri_object = Nokogiri::HTML(info)
 
       # Description
-      description = nokogiri_object.xpath("//text()[5]").to_s
+      description = nokogiri_object.xpath('//text()[5]').to_s
       event[:description] = description
 
       # Location
-      address1 = nokogiri_object.xpath("//text()[1]")[0].to_s
-      address2 = nokogiri_object.xpath("//text()[2]").to_s
-      address3 = nokogiri_object.xpath("//text()[3]").to_s
-      location = address1 + ", " + address2 + ", " + address3
+      address1 = nokogiri_object.xpath('//text()[1]')[0].to_s
+      address2 = nokogiri_object.xpath('//text()[2]').to_s
+      address3 = nokogiri_object.xpath('//text()[3]').to_s
+      location = address1 + ', ' + address2 + ', ' + address3
       event[:location] = location
 
       # Topics
-      event_types = ["Adults", "All", "Children", "Family", "Pets", "Senior", "Special Needs",
-        "Teen", "Festivals/Fairs", "Film", "Community", "Education", "Youth", "Other",
-        "Public Safety", "Ethnic/Cultural", "Museum/Gallery", "Special Events",
-        "Arts", "Holiday/Seasonal Events", "Tourism", "Business/Trade", "Gardening",
-        "Hobbies", "Boards &amp; Commissions", "Nature/Environment", "Volunteer/Work Party",
-        "Public Outreach and Engagement", "Public Forum", "Training-Classes/Workshops",
-        "City Council Meeting", "Technology", "Transportation", "Neighborhood Meetings",
-        "Music", "Animal Shelter", "LGBT", "Dance", "Sports/Recreation", "Theater"]
+      event_types = [
+        'Adults', 'All', 'Children', 'Family', 'Pets', 'Senior',
+        'Special Needs', 'Teen', 'Festivals/Fairs', 'Film', 'Community',
+        'Education', 'Youth', 'Other', 'Public Safety', 'Ethnic/Cultural',
+        'Museum/Gallery', 'Special Events', 'Arts', 'Holiday/Seasonal Events',
+        'Tourism', 'Business/Trade', 'Gardening', 'Hobbies',
+        'Boards &amp; Commissions', 'Nature/Environment',
+        'Volunteer/Work Party', 'Public Outreach and Engagement',
+        'Public Forum', 'Training-Classes/Workshops', 'City Council Meeting',
+        'Technology', 'Transportation', 'Neighborhood Meetings', 'Music',
+        'Animal Shelter', 'LGBT', 'Dance', 'Sports/Recreation', 'Theater'
+      ]
 
-      topics = ""
+      topics = ''
       event_types.each do |type|
         if info.include? type
-          topics += type + ", "
+          topics += type + ', '
         end
       end
-      topics = topics.chomp(", ")
+      topics = topics.chomp(', ')
       event[:topics] = topics
 
       events << event

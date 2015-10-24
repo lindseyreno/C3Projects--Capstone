@@ -8,55 +8,55 @@ class AssignCategories
       event.categories << category
     else
       topic_category = {
-        "Adult"                          => "Adults",
-        "All"                            => "Fun for the Whole Family",
-        "Animal Shelter"                 => "Pets",
-        "Arts"                           => "Arts",
-        "Boards &amp; Commissions"       => "Boards and Commissions",
-        "Business/Trade"                 => "Business and Trade",
-        "Children"                       => "For the Kids",
-        "City Council Meetings"          => "City Council Meetings",
-        "Community"                      => "Community",
-        "Dance"                          => "Arts",
-        "Education"                      => "Learning Opportunities",
-        "Ethnic/Cultural"                => "Cultural",
-        "Family"                         => "Fun for the Whole Family",
-        "Festivals/Fairs"                => "Festivals and Fairs",
-        "Film"                           => "Arts",
-        "Gardening"                      => "Gardening",
-        "Hobbies"                        => "Hobbies",
-        "Holiday/Seasonal Events"        => "Seasonal",
-        "LGBT"                           => "LGBT",
-        "Museum/Gallery"                 => "Arts",
-        "Music"                          => "Arts",
-        "Nature/Environment"             => "Nature and Environment",
-        "Neighborhood Meetings"          => "Local Government",
-        "Other"                          => "Miscellaneous",
-        "Pets"                           => "Pets",
-        "Public Forum"                   => "Local Government",
-        "Public Outreach and Engagement" => "Community",
-        "Public Safety"                  => "Community",
-        "Senior"                         => "Seniors",
-        "Special Events"                 => "Miscellaneous",
-        "Sports/Recreation"              => "Sports and Recreation",
-        "Theater"                        => "Arts",
-        "Training-Classes/Workshops"     => "Learning Opportunities",
-        "Transportation"                  => "Transportation",
-        "Volunteer/Work Party"           => "Volunteer",
-        "Youth"                          => "For the Kids"
+        'Adult'                          => 'Adults',
+        'All'                            => 'Fun for the Whole Family',
+        'Animal Shelter'                 => 'Pets',
+        'Arts'                           => 'Arts',
+        'Boards &amp; Commissions'       => 'Boards and Commissions',
+        'Business/Trade'                 => 'Business and Trade',
+        'Children'                       => 'For the Kids',
+        'City Council Meetings'          => 'City Council Meetings',
+        'Community'                      => 'Community',
+        'Dance'                          => 'Arts',
+        'Education'                      => 'Learning Opportunities',
+        'Ethnic/Cultural'                => 'Cultural',
+        'Family'                         => 'Fun for the Whole Family',
+        'Festivals/Fairs'                => 'Festivals and Fairs',
+        'Film'                           => 'Arts',
+        'Gardening'                      => 'Gardening',
+        'Hobbies'                        => 'Hobbies',
+        'Holiday/Seasonal Events'        => 'Seasonal',
+        'LGBT'                           => 'LGBT',
+        'Museum/Gallery'                 => 'Arts',
+        'Music'                          => 'Arts',
+        'Nature/Environment'             => 'Nature and Environment',
+        'Neighborhood Meetings'          => 'Local Government',
+        'Other'                          => 'Miscellaneous',
+        'Pets'                           => 'Pets',
+        'Public Forum'                   => 'Local Government',
+        'Public Outreach and Engagement' => 'Community',
+        'Public Safety'                  => 'Community',
+        'Senior'                         => 'Seniors',
+        'Special Events'                 => 'Miscellaneous',
+        'Sports/Recreation'              => 'Sports and Recreation',
+        'Theater'                        => 'Arts',
+        'Training-Classes/Workshops'     => 'Learning Opportunities',
+        'Transportation'                 => 'Transportation',
+        'Volunteer/Work Party'           => 'Volunteer',
+        'Youth'                          => 'For the Kids'
       }
 
       topic_category2 = {
-        "Boards &amp; Commissions"       => "Local Government",
-        "City Council Meetings"          => "Local Government",
-        "Dance"                          => "Dance",
-        "Film"                           => "Film",
-        "Gardening"                      => "Hobbies",
-        "Hobbies"                        => "Sports and Recreation",
-        "Museum/Gallery"                 => "Museums and Galleries",
-        "Music"                          => "Music",
-        "Public Safety"                  => "Public Safety",
-        "Theater"                        => "Theater"
+        'Boards &amp; Commissions'       => 'Local Government',
+        'City Council Meetings'          => 'Local Government',
+        'Dance'                          => 'Dance',
+        'Film'                           => 'Film',
+        'Gardening'                      => 'Hobbies',
+        'Hobbies'                        => 'Sports and Recreation',
+        'Museum/Gallery'                 => 'Museums and Galleries',
+        'Music'                          => 'Music',
+        'Public Safety'                  => 'Public Safety',
+        'Theater'                        => 'Theater'
       }
 
       topic_category.each do |key, value|
@@ -74,8 +74,8 @@ class AssignCategories
       end
 
       # Fun for the Whole Family
-      if event[:topics].include? ("Adults" && "Children" && "Senior" && "Special Needs" && "Teen")
-        category = Category.find_by(name: "Fun for the Whole Family")
+      if event[:topics].include? ('Adults' && 'Children' && 'Senior' && 'Special Needs' && 'Teen')
+        category = Category.find_by(name: 'Fun for the Whole Family')
         event.categories << category
       end
     end

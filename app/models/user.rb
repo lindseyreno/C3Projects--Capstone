@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates_format_of :email, with: /\w+@\w+\.\w+/, :on => :create
+  validates :email, format: /\w+@\w+\.\w+/, :on => :create
   validates :password, presence: true, confirmation: true
 
   def self.new_token
