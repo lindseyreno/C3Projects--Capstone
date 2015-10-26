@@ -28,7 +28,6 @@ categories = [
   { name: 'Gardening' },
   { name: 'Hobbies' },
   { name: 'Business and Trade' },
-  { name: 'Adults' },
   { name: 'Seniors' },
   { name: 'LGBT' }
 ]
