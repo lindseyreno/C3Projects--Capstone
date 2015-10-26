@@ -6,4 +6,19 @@ class Event < ActiveRecord::Base
   validates :date, presence: true
 
   scope :todays_events, -> { where(:date => Date.current) }
+
+  # Events for the day after the email is sent
+  scope :everyday, -> { where(:date => Date.current + 1.day) }
+
+  # Events for the friday, saturday, and sunday after the wednesday the email is sent
+  scope :weekend, -> { where(:date => (Date.current + 2.days)..(Date.current + 2.days) + 2.days) }
+
+  # Events for the week after the email is sent
+  scope :week, -> { where(:date => Date.current..Date.current + 1.week) }
+
+  # Events for the two weeks after the email is sent
+  scope :two_weeks, -> { where(:date => Date.current..Date.current + 2.weeks) }
+
+  # Events for the month the email is sent, it is sent on the 1st of the month
+  scope :month, -> { where(:date => Date.current...Date.current.next_month.beginning_of_month) }
 end
