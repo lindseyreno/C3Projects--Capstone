@@ -8,7 +8,6 @@ class AssignCategories
       event.categories << category
     else
       topic_category = {
-        'Adult'                          => 'Adults',
         'All'                            => 'Fun for the Whole Family',
         'Animal Shelter'                 => 'Pets',
         'Arts'                           => 'Arts',
