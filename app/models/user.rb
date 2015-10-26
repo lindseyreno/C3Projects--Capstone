@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   validates :email, format: /\w+@\w+\.\w+/, :on => :create
   validates :password, presence: true, confirmation: true
 
+  scope :everyday, -> { where(:schedule_id => Schedule.everyday) }
+  scope :weekend, -> { where(:schedule_id => Schedule.weekend) }
+  scope :week, -> { where(:schedule_id => Schedule.week) }
+  scope :two_weeks, -> { where(:schedule_id => Schedule.two_weeks) }
+  scope :month, -> { where(:schedule_id => Schedule.month) }
+
   def self.new_token
     SecureRandom.urlsafe_base64
   end
