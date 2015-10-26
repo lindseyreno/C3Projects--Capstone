@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
+
 # Use pg as the database
 gem 'pg'
 # Use SCSS for stylesheets
@@ -23,10 +24,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -35,9 +34,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # For natural language processing
 gem 'treat'
-
 # Use for scheduling cron tasks
 gem 'whenever', :require => false
+# For styling
+gem 'bootstrap-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
