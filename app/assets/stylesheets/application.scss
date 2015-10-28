@@ -11,5 +11,86 @@
  * file per style scope.
  *
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.sign-dp {
+  min-width: 250px;
+  padding: 14px 14px 0;
+  overflow:hidden;
+  background-color:rgba(255,255,255,.8);
+}
+
+.sign-dp.bottom {
+  background-color:rgba(255,255,255,.8);
+  border-top:1px solid #ddd;
+  clear:both;
+  padding:14px;
+}
+.sign-dp.form-group {
+  margin-bottom: 10px;
+}
+
+.btn-fb {
+  color: #fff;
+  background-color: #3b5998;
+}
+
+.btn-fb:hover {
+  color: #fff;
+  background-color: #496ebc
+}
+
+.btn-tw {
+  color: #fff;
+  background-color: #55acee;
+}
+
+.btn-tw:hover {
+  color: #fff;
+  background-color: #59b5fa;
+}
+
+.user {
+  margin-bottom: 10px;
+}
+
+@media(max-width:768px) {
+  .sign-dp {
+    background-color: inherit;
+    color: #fff;
+  }
+  .sign-dp.bottom {
+    background-color: inherit;
+    border-top: 0 none;
+  }
+}
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+.row {
+  -moz-column-width: 18em;
+  -webkit-column-width: 18em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+}
+
+.item {
+  display: inline-block;
+  padding: .25em;
+  width: 100%;
+}
+
+.panel {
+  position: relative;
+  display: block;
+}
+
+.prefbox {
+  margin-top: 1.25em;
+}
+
+.userbox {
+  margin-top: 3em;
+}
