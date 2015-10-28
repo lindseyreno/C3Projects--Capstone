@@ -16,8 +16,7 @@ categories = [
   { name: 'Public Safety' },
   { name: 'Nature and Environment' },
   { name: 'Technology' },
-  { name: 'Cultural' },
-  { name: 'Miscellaneous' },
+  { name: 'Culture' },
   { name: 'Local Government' },
   { name: 'City Council Meetings' },
   { name: 'Pets' },
@@ -29,7 +28,8 @@ categories = [
   { name: 'Hobbies' },
   { name: 'Business and Trade' },
   { name: 'Seniors' },
-  { name: 'LGBT' }
+  { name: 'LGBT' },
+  { name: 'Miscellaneous' }
 ]
 
 categories.each do |category|
@@ -134,6 +134,9 @@ schedules = [
   },
   { :name => 'This Month',
     :description => 'Contains events for the month, sent on the first day of the month.'
+  },
+  { :name => 'None',
+    :description => 'The newsletter is not sent.'
   }
 ]
 
