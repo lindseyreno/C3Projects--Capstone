@@ -1,36 +1,52 @@
-<h1>Edit Preferences</h1>
-<%= form_for @user, url: { action: "update_preferences" }  do |f| %>
-  <fieldset>
-    <div class="form-group">
-      <% @categories.each do |category| %>
-        <% unless @user.categories.include?(category) %>
-            <%= check_box_tag "user[category_ids][]", category.id %>
-            <%= label_tag :name, "#{category.name}" %>
-        <% else %>
-            <%= check_box_tag "user[category_ids][]", category.id, checked = true %>
-            <%= label_tag :name, "#{category.name}" %>
-        <% end %>
-      <% end %>
+<div class='prefbox col-md-8 col-md-offset-2'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <div class='panel-title'>Newsletter Preferences</div>
     </div>
-  </fieldset>
-
-  <fieldset>
-    <% @schedules.each do |schedule| %>
-      <% unless @user.schedule_id == schedule.id %>
-        <%= radio_button_tag :schedule_id, "#{schedule.id}"%>
-        <%= label_tag :schedule_id, "#{schedule.name}"%>
-      <% else %>
-        <%= radio_button_tag :schedule_id, "#{schedule.id}", checked = true %>
-        <%= label_tag :schedule_id, "#{schedule.name}"%>
-      <% end %>
+    <div class='panel-body' >
+      <%= form_for @user, url: { action: 'update_preferences' }  do |f| %>
+      <div class='form'>
+        <h5>Categories</h5>
+        <fieldset>
+        <% @categories.each do |category| %>
+          <div class='col-md-4'>
+            <% unless @user.categories.include?(category) %>
+              <div class='form group'>
+                <%= check_box_tag 'user[category_ids][]', category.id %>
+                <%= label_tag :name, "#{category.name}" %>
+              </div>
+            <% else %>
+              <div class='form group'>
+                <%= check_box_tag 'user[category_ids][]', category.id, checked = true %>
+                <%= label_tag :name, "#{category.name}" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        </fieldset>
+      </div>
+      <div class='form'>
+        <h5>Schedules</h5>
+        <fieldset>
+        <% @schedules.each do |schedule| %>
+          <% unless @user.schedule_id == schedule.id %>
+            <div class='form group'>
+              <%= radio_button_tag :schedule_id, "#{schedule.id}"%>
+              <%= label_tag :schedule_id, "#{schedule.name}" %>
+              <small><%= " #{schedule.description}" %></small>
+            </div>
+          <% else %>
+            <div class='form group'>
+              <%= radio_button_tag :schedule_id, "#{schedule.id}", checked = true %>
+              <%= label_tag :schedule_id, "#{schedule.name}" %>
+              <small><%= " #{schedule.description}" %></small>
+            </div>
+          <% end %>
+        <% end %>
+        </fieldset>
+      </div>
+      <%= f.submit 'Update Preferences', class: 'btn btn-default' %>
     <% end %>
-  </fieldset>
-  <%= f.submit "Update Preferences" %>
-<% end %>
-
-
-
-<%#= hidden_field_tag "user[category_ids][]", nil %>
-<%# Category.all.each do |category| %>
-  <%#= check_box_tag :category_ids, category.id, @user.categories.include?(category), :name => 'user[category_ids][]' %>
-<%# end %>
+    </div>
+  </div>
+</div>

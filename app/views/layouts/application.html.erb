@@ -5,16 +5,28 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- Bootstrap -->
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-  <% if flash[:messages] %>
-    <h5><%= flash[:messages] %></h5>
-  <% end %>
+  <header>
+    <%= render partial: "shared/navbar" %>
+  </header>
+  <div class="container">
+    <% if flash[:messages] %>
+      <h5><%= flash[:messages] %></h5>
+    <% end %>
 
-  <% if flash[:errors] %>
-    <h5><%= flash[:errors] %></h5>
-  <% end %>
-<%= yield %>
-
+    <% if flash[:errors] %>
+      <h5><%= flash[:errors] %></h5>
+    <% end %>
+  </div>
+  <%= yield %>
 </body>
 </html>
