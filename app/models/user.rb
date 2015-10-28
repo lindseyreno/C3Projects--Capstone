@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   belongs_to :schedule
 
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true
   validates :email, format: /\w+@\w+\.\w+/, :on => :create
   validates :password, presence: true, confirmation: true
 

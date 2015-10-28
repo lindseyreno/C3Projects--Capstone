@@ -27,14 +27,6 @@ RSpec.describe User, type: :model do
         expect(user.errors.keys).to include(:email)
       end
 
-      it "requires email to be unique" do
-        create :user
-        user = build :user, username: "sam"
-
-        user.valid?
-        expect(user.errors.messages).to include(:email => ["has already been taken"])
-      end
-
       it "requires email to fit an email pattern" do
         user = build :user, email: "@."
 
