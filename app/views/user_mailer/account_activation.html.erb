@@ -5,3 +5,7 @@
 <p>Welcome to My Seattle Events! Click on the link below to activate your account: </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+<%= <a href="http://www.myseattleevents.com/account_activations/#{@user.activation_token}/edit?email=#{@user.email.gsub('@', '%')}">"Activate"</a> %>
+
+<%= <a href="http://www.myseattleevents.com/account_activations/#{@user.activation_token}/edit?email=#{@user.email}">"Activate"</a> %>
