@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
   MESSAGES = {
     successful_sign_out: 'You have signed out.',
-    successful_sign_in: 'You have successfully signed in.'
+    successful_sign_in: 'You have successfully signed in.',
+    successful_save: "Changes successfully saved."
   }
 
   ERRORS = {
