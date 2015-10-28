@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :require_sign_in, only: [:edit, :update, :edit_preferences, :update_preferences]
   before_action :set_user, only: [:edit, :update, :edit_preferences, :update_preferences]
 
+  def new; end
+
   def create
     @user = User.new(user_params)
     if @user.save
