@@ -4,7 +4,9 @@ class AccountActivationsController < ApplicationController
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.update(activated: true)
       user.update(activated_at: Time.zone.now)
-      session[:user_id] = user.id
+      if user.activated == true
+        session[:user_id] = user.id
+      end
       redirect_to root_path
     else
       flash[:errors] = ERRORS[:invalid_activation]
