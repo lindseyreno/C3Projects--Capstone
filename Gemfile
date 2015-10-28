@@ -32,8 +32,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# For natural language processing
-gem 'treat'
 # Use for scheduling cron tasks
 gem 'whenever', :require => false
 # For styling
