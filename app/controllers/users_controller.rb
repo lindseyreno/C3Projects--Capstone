@@ -1,16 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_sign_in, only: [:edit, :edit_preferences, :update_preferences]
-  before_action :set_user, only: [:edit, :edit_preferences, :update_preferences]
-
-  def new
-    if session[:user_id].nil?
-      @user = User.new
-      render :new
-    else
-      flash[:errors] = ERRORS[:account_exists]
-      redirect_to root_path
-    end
-  end
+  before_action :require_sign_in, only: [:edit, :update, :edit_preferences, :update_preferences]
+  before_action :set_user, only: [:edit, :update, :edit_preferences, :update_preferences]
 
   def create
     @user = User.new(user_params)
@@ -19,13 +9,20 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash.now[:errors] = ERRORS[:unsuccessful_sign_up]
-      render :new
+      redirect_to root_path
     end
   end
 
   def edit; end
 
   def update
+    if @user.update_attributes(user_params)
+      flash[:messages] = MESSAGES[:successful_save]
+      redirect_to root_path
+    else
+      flash[:messages] = MESSAGES[:unsuccessful_save]
+      render :edit
+    end
     # TODO: make this so you update one part at a time if the user is signed in
   end
 
@@ -35,17 +32,22 @@ class UsersController < ApplicationController
   end
 
   def update_preferences
-    @user.update_attribute(:schedule_id, params[:schedule_id])
-    if params[:user].nil?
-      @user.categories = []
-    else
-      updated_categories = []
-      params[:user][:category_ids].each do |category_id|
-        updated_categories << Category.find(category_id)
-        @user.categories = updated_categories
+    if @user.update_attribute(:schedule_id, params[:schedule_id])
+      if params[:user].nil?
+        @user.categories = []
+      else
+        updated_categories = []
+        params[:user][:category_ids].each do |category_id|
+          updated_categories << Category.find(category_id)
+          @user.categories = updated_categories
+        end
       end
+      flash[:messages] = MESSAGES[:successful_save]
+      redirect_to root_path
+    else
+      flash[:messages] = MESSAGES[:unsuccessful_save]
+      render :edit_preferences
     end
-    redirect_to root_path
   end
 
   private
