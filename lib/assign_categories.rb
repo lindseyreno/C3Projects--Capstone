@@ -18,7 +18,7 @@ class AssignCategories
         'Community'                      => 'Community',
         'Dance'                          => 'Arts',
         'Education'                      => 'Learning Opportunities',
-        'Ethnic/Cultural'                => 'Cultural',
+        'Ethnic/Cultural'                => 'Culture',
         'Family'                         => 'Fun for the Whole Family',
         'Festivals/Fairs'                => 'Festivals and Fairs',
         'Film'                           => 'Arts',
