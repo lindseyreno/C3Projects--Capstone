@@ -1,0 +1,10 @@
+<h1>My Seattle Events - <%= @schedule %></h1>
+
+<p>Hi <%= @user.username %>, </p>
+
+<% @categories.each do |category| %>
+  <h4><%= category.name %></h4>
+  <% category.events.send("#{@plan}").each do |event| %>
+    <li><%= event.title %> - <%= pretty_date(event.date) %></li>
+  <% end %>
+<% end %>
