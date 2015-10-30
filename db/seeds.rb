@@ -129,9 +129,9 @@ schedules = [
   { :name => 'This Week',
     :description => 'Contains events for the whole week, sent every Sunday.'
   },
-  { :name => 'Every Two Weeks',
-    :description => 'Contains events for the next two weeks, sent on Sunday every other week.'
-  },
+  # { :name => 'Every Two Weeks',
+  #   :description => 'Contains events for the next two weeks, sent on Sunday every other week.'
+  # },
   { :name => 'This Month',
     :description => 'Contains events for the month, sent on the first day of the month.'
   },
