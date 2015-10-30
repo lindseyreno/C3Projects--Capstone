@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     sign_in_error: 'There was a problem signing in. Please try again.',
     sign_in_required: 'You must be signed in to view this page.',
     account_exists: 'You already have an account.',
-    # TODO: maybe change this to ask if this is the user signed in?
+    # maybe change this to ask if this is the user signed in?
     # if not, allow them to sign out
     unsuccessful_sign_up: 'There was a problem with your sign up info. Please try again.',
     unsuccessful_save: 'Could not save. Please check the information and try again.',

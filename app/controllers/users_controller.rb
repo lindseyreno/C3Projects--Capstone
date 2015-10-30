@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # UserMailer.account_activation(@user).deliver_now
-      session[:user_id] = @user.id
       redirect_to root_path
     else
       flash.now[:errors] = ERRORS[:unsuccessful_sign_up]
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
       flash[:messages] = MESSAGES[:unsuccessful_save]
     end
     redirect_to root_path
-    # TODO: make this so you update one part at a time if the user is signed in
+    # make this so you update one part at a time if the user is signed in
   end
 
   def edit_preferences
