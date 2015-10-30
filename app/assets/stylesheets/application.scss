@@ -15,19 +15,75 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-image: image-url('library.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+}
+
+h3 {
+  display: inline-block;
+  background-color: #fff;
+  padding: .5em;
+  margin: .80em;
+  border-radius: 4px;
+  opacity: .85;
+}
+
+.navbar-brand {
+  font-size: 28px;
+}
+
+.navbar-default .navbar-brand {
+  color: #0146ab;
+}
+
+.modal-body.edit-pref h5 {
+  color: #0146ab;
+}
+
+.modal-title.edit-pref {
+  color: #0146ab;
+}
+
+.messages h4 {
+  text-align: right;
+  position: absolute; right: 30%;
+  background-color: #fff;
+  padding: .5em;
+  margin: .80em;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #aec3f3;
+}
+
+.btn:hover {
+  background-color: #6793e6;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.85);
+}
+
 .sign-dp {
   min-width: 250px;
   padding: 14px 14px 0;
   overflow:hidden;
-  background-color:rgba(255,255,255,.8);
+  background-color:rgba(255,255,255,1);
 }
 
 .sign-dp.bottom {
-  background-color:rgba(255,255,255,.8);
+  background-color:rgba(255,255,255,1);
   border-top:1px solid #ddd;
   clear:both;
   padding:14px;
 }
+
 .sign-dp.form-group {
   margin-bottom: 10px;
 }
@@ -85,6 +141,24 @@
 .panel {
   position: relative;
   display: block;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.panel-default > .panel-heading {
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.panel-heading {
+  padding: 3px;
+  text-align: center;
+}
+
+.panel-heading a {
+  color: #0146ab;
+}
+
+.panel a {
+  color: #0146ab;
 }
 
 .prefbox {
@@ -93,4 +167,44 @@
 
 .userbox {
   margin-top: 3em;
+}
+
+.modal-dialog.edit {
+  width: 900px;
+}
+
+div.mega li {
+  margin-bottom: 10px;
+}
+
+div.mega a {
+  color: #000;
+  padding: 4px;
+  text-decoration: none;
+}
+
+div.mega li:hover {
+  color: #000;
+  text-decoration: none;
+  background-color: rgba(221, 221, 221, 0.35);
+}
+
+@media screen and (min-width: 768px) {
+  .megamenu ul {
+    padding-top: 8px;
+    padding-bottom:7px;
+  }
+
+  .megamenu > .dropdown-menu {
+    left:-90%;
+    min-width:800px;
+  }
+}
+
+.dropdown-md > .dropdown-menu {
+  min-width:450px;
+}
+
+.dropdown-lg > .dropdown-menu {
+  min-width:850px;
 }
