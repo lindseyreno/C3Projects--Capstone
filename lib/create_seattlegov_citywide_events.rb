@@ -7,7 +7,8 @@ class CreateSeattlegovCitywideEvents
         next
       end
       begin
-        if created_event = Event.find_by(event)
+        if Event.find_by(event)
+          created_event = Event.find_by(event)
           AssignCategories.assign_categories(created_event)
         end
       rescue ActiveRecord::RecordNotUnique
