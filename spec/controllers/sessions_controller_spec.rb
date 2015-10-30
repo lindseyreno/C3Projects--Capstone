@@ -29,26 +29,26 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
 
-    context 'valid user params and user is not activated' do
-      let(:user_sign_in_params) { { session: { username: 'sam', password: 'user_password' } } }
-
-      before :each do
-        @user = create :user, activated: false, activated_at: nil
-        post :create, user_sign_in_params
-      end
-
-      it 'does not set session[:user_id]' do
-        expect(session[:user_id]).to be nil
-      end
-
-      it 'flashes error message' do
-        expect(flash[:errors]).to include('Account not activated. Check your email for the activation link.')
-      end
-
-      it 'redirects to the home page' do
-        expect(response).to redirect_to(root_path)
-      end
-    end
+    # context 'valid user params and user is not activated' do
+    #   let(:user_sign_in_params) { { session: { username: 'sam', password: 'user_password' } } }
+    #
+    #   before :each do
+    #     @user = create :user, activated: false, activated_at: nil
+    #     post :create, user_sign_in_params
+    #   end
+    #
+    #   it 'does not set session[:user_id]' do
+    #     expect(session[:user_id]).to be nil
+    #   end
+    #
+    #   it 'flashes error message' do
+    #     expect(flash[:errors]).to include('Account not activated. Check your email for the activation link.')
+    #   end
+    #
+    #   it 'redirects to the home page' do
+    #     expect(response).to redirect_to(root_path)
+    #   end
+    # end
 
     context 'valid user params and user is activated' do
       let(:user_sign_in_params) { { session: { username: 'sam', password: 'user_password' } } }

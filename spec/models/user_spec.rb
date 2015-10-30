@@ -43,32 +43,32 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'methods' do
-    describe '#authenticated?' do
-      it 'returns false for a user with nil digest' do
-        user = create :user
-
-        expect(user.authenticated?(:activation, '')).to eq false
-      end
-
-      it 'returns true if the activation_token matches the activation_digest' do
-        user = create :user
-
-        expect(user.authenticated?(:activation, user.activation_token)).to eq true
-      end
-    end
-
-    describe '#self.new_token' do
-      it 'returns a token with a length of 22 characters' do
-        expect(User.new_token.length).to eq 22
-      end
-
-      it 'returns a different token every time it is called' do
-        token = User.new_token
-        token2 = User.new_token
-
-        expect(token).to_not eq token2
-      end
-    end
-  end
+  # describe 'methods' do
+    # describe '#authenticated?' do
+    #   it 'returns false for a user with nil digest' do
+    #     user = create :user
+    #
+    #     expect(user.authenticated?(:activation, '')).to eq false
+    #   end
+    #
+    #   it 'returns true if the activation_token matches the activation_digest' do
+    #     user = create :user
+    #
+    #     expect(user.authenticated?(:activation, user.activation_token)).to eq true
+    #   end
+    # end
+    #
+    # describe '#self.new_token' do
+    #   it 'returns a token with a length of 22 characters' do
+    #     expect(User.new_token.length).to eq 22
+    #   end
+    #
+    #   it 'returns a different token every time it is called' do
+    #     token = User.new_token
+    #     token2 = User.new_token
+    #
+    #     expect(token).to_not eq token2
+    #   end
+    # end
+  # end
 end
