@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
       @user = User.new
     end
     @categories = Category.all
+    @schedules = Schedule.all
     @events = Event.todays_events
   end
 end
