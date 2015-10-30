@@ -1,13 +1,8 @@
-<div class='prefbox col-md-8 col-md-offset-2'>
-  <div class='panel panel-default'>
-    <div class='panel-heading'>
-      <div class='panel-title'>Newsletter Preferences</div>
-    </div>
-    <div class='panel-body' >
-      <%= form_for @user, url: { action: 'update_preferences' }  do |f| %>
-      <div class='form'>
-        <h5>Categories</h5>
-        <fieldset>
+<% if session[:user_id] %>
+  <%= form_tag({id: @user.id, controller: 'users', action: 'update_preferences'}, method: 'patch') do |f| %>
+    <div class='form'>
+      <h5>Categories</h5>
+      <fieldset>
         <% @categories.each do |category| %>
           <div class='col-md-4'>
             <% unless @user.categories.include?(category) %>
@@ -23,11 +18,11 @@
             <% end %>
           </div>
         <% end %>
-        </fieldset>
-      </div>
-      <div class='form'>
-        <h5>Schedules</h5>
-        <fieldset>
+      </fieldset>
+    </div>
+    <div class='form'>
+      <h5>Schedules</h5>
+      <fieldset>
         <% @schedules.each do |schedule| %>
           <% unless @user.schedule_id == schedule.id %>
             <div class='form group'>
@@ -43,10 +38,10 @@
             </div>
           <% end %>
         <% end %>
-        </fieldset>
-      </div>
-      <%= f.submit 'Update Preferences', class: 'btn btn-default' %>
-    <% end %>
+      </fieldset>
     </div>
-  </div>
-</div>
+    <div class='modal-footer'>
+      <%= submit_tag 'Update Preferences', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+<% end %>
