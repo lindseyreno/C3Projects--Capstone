@@ -1,38 +1,72 @@
 <nav class='navbar navbar-default'>
   <div class='container-fluid'>
     <div class='navbar-header'>
+      <button class='navbar-toggle' type='button' data-toggle='collapse' data-target='.js-navbar-collapse'>
+  			<span class='sr-only'>Toggle navigation</span>
+  			<span class='icon-bar'></span>
+  			<span class='icon-bar'></span>
+  			<span class='icon-bar'></span>
+      </button>
       <%= link_to 'My Seattle Events', root_path, class: 'navbar-brand' %>
     </div>
-    <div class='collapse navbar-collapse'>
+    <div class='collapse navbar-collapse js-navbar-collapse'>
+      <ul class='nav navbar-nav navbar-left'>
+        <li><%= link_to 'Home', root_path %></li>
+        <li class='dropdown megamenu'>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Categories <span class='caret'></span></a>
+            <div class='mega dropdown-menu'>
+              <ul class='list-unstyled col-lg-3 col-sm-6' role='menu'>
+                <% @categories[0..7].each do |category| %>
+                  <li><%= link_to "#{category.name}", category_path(category.id) %></li>
+                <% end %>
+              </ul>
+              <ul class='list-unstyled col-lg-3 col-sm-6' role='menu'>
+                <% @categories[8..15].each do |category| %>
+                  <li><%= link_to "#{category.name}", category_path(category.id) %></li>
+                <% end %>
+              </ul>
+              <ul class='list-unstyled col-lg-3 col-sm-6' role='menu'>
+                <% @categories[16..23].each do |category| %>
+                  <li><%= link_to "#{category.name}", category_path(category.id) %></li>
+                <% end %>
+              </ul>
+              <ul class='list-unstyled col-lg-3 col-sm-6' role='menu'>
+                <% @categories[24..28].each do |category| %>
+                  <li><%= link_to "#{category.name}", category_path(category.id) %></li>
+                <% end %>
+              </ul>
+            </div>
+        </li>
+      </ul>
       <ul class='nav navbar-nav navbar-right'>
         <% if session[:user_id].nil? %>
           <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><b>Sign Up</b><span class='caret'></span></a>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><b>Sign Up </b><span class='caret'></span></a>
             <ul class='sign-dp dropdown-menu'>
               <li>
                 <div class='row'>
                   <div class='col-md-12'>
                     <div class='form'>
                       <%= form_for @user do |f| %>
-                      <div class='form-group'>
-                        <%= f.label :username %>
-                        <%= f.text_field :username, required: true %>
-                      </div>
-                      <div class='form-group'>
-                        <%= f.label :email, 'Email Address' %>
-                        <%= f.email_field :email, required: true %>
-                      </div>
-                      <div class='form-group'>
-                        <%= f.label :password %>
-                        <%= f.password_field :password, required: true %>
-                      </div>
-                      <div class='form-group'>
-                        <%= f.label :password_confirmation %>
-                        <%= f.password_field :password_confirmation, required: true %>
-                      </div>
-                      <div class='form-group'>
-                        <%= f.submit 'Sign Up', class: 'btn btn-primary btn-block' %>
-                      </div>
+                        <div class='form-group'>
+                          <%= f.label :username %>
+                          <%= f.text_field :username, required: true %>
+                        </div>
+                        <div class='form-group'>
+                          <%= f.label :email, 'Email Address' %>
+                          <%= f.email_field :email, required: true %>
+                        </div>
+                        <div class='form-group'>
+                          <%= f.label :password %>
+                          <%= f.password_field :password, required: true %>
+                        </div>
+                        <div class='form-group'>
+                          <%= f.label :password_confirmation %>
+                          <%= f.password_field :password_confirmation, required: true %>
+                        </div>
+                        <div class='form-group'>
+                          <%= f.submit 'Sign Up', class: 'btn btn-default btn-block' %>
+                        </div>
                       <% end %>
                     </div>
                   </div>
@@ -41,24 +75,24 @@
             </ul>
           </li>
           <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><b>Sign In</b><span class='caret'></span></a>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><b>Sign In </b><span class='caret'></span></a>
             <ul class='sign-dp dropdown-menu'>
               <li>
                 <div class='row'>
                   <div class='col-md-12'>
                     <div class='form'>
                       <%= form_for(:session, url: sign_in_path)  do |f| %>
-                      <div class='form-group'>
-                        <%= f.label :username %>
-                        <%= f.text_field :username, :required => true %>
-                      </div>
-                      <div class='form-group'>
-                        <%= f.label :password %>
-                        <%= f.password_field :password, :required => true %>
-                      </div>
-                      <div class='form-group'>
-                        <%= f.submit 'Sign In', class: 'btn btn-primary btn-block' %>
-                      </div>
+                        <div class='form-group'>
+                          <%= f.label :username %>
+                          <%= f.text_field :username, :required => true %>
+                        </div>
+                        <div class='form-group'>
+                          <%= f.label :password %>
+                          <%= f.password_field :password, :required => true %>
+                        </div>
+                        <div class='form-group'>
+                          <%= f.submit 'Sign In', class: 'btn btn-default btn-block' %>
+                        </div>
                       <% end %>
                     </div>
                   </div>
@@ -68,10 +102,10 @@
           </li>
         <% else %>
           <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><b><%= @user.username %></b><span class='caret'></span></a>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><b><%= @user.username %> </b><span class='caret'></span></a>
             <ul class='sign-dp dropdown-menu'>
-              <li class='user'><%= link_to 'Profile', edit_user_path(session[:user_id]) %></li>
-              <li class='user'><%= link_to 'Email Preferences', edit_preferences_path(session[:user_id]) %></li>
+              <li class='user'><a href='#' data-toggle='modal' data-target='#edit-user'>Edit Profile</a></li>
+              <li class='user'><a href='#' data-toggle='modal' data-target='#edit-pref'>Newsletter Preferences</a></li>
             </ul>
           </li>
           <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
@@ -80,3 +114,32 @@
     </div>
   </div>
 </nav>
+
+<!-- Modals triggered from a nav bar must be placed outside of the nav element in order to work -->
+<div id='edit-user' class='modal fade'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+        <h4 class='modal-title'>Edit Profile</h4>
+      </div>
+      <div class='modal-body'>
+        <%= render partial: 'shared/edit_form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='edit-pref' class='modal fade'>
+  <div class='modal-dialog edit'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+        <h4 class='modal-title edit-pref'>Newsletter Preferences</h4>
+      </div>
+      <div class='modal-body edit-pref'>
+        <%= render partial: 'shared/edit_preferences_form' %>
+      </div>
+    </div>
+  </div>
+</div>

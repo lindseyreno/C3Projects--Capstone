@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>C3ProjectsCapstone</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>C3ProjectsCapstone</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!-- Bootstrap -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0”> -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <header>
+      <%= render partial: "shared/navbar" %>
+    </header>
+    <div class="container">
+      <div class="messages">
+        <% if flash[:messages] %>
+          <h4><%= flash[:messages] %></h4>
+        <% end %>
 
-  <!-- Bootstrap -->
-  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <!-- <script src="js/bootstrap.min.js"></script> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-</head>
-<body>
-  <header>
-    <%= render partial: "shared/navbar" %>
-  </header>
-  <div class="container">
-    <% if flash[:messages] %>
-      <h5><%= flash[:messages] %></h5>
-    <% end %>
-
-    <% if flash[:errors] %>
-      <h5><%= flash[:errors] %></h5>
-    <% end %>
-  </div>
-  <%= yield %>
-</body>
+        <% if flash[:errors] %>
+          <h4><%= flash[:errors] %></h4>
+        <% end %>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
 </html>

@@ -1,0 +1,23 @@
+<% @category.events.todays_events.each do |event| %>
+  <li><a href='#' data-toggle='modal' data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+  <div id="modal-<%= event.id %>" class='modal fade'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'><%= event.title %></h4>
+        </div>
+        <div class='modal-body'>
+          <p><%= pretty_date(event.date) %></p>
+          <p><%= event.description %></p>
+          <p><%= event.location %></p>
+          <p><%= event.email %></p>
+          <p><%= link_to 'More Info', event.url, :target => '_blank' %></p>
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
