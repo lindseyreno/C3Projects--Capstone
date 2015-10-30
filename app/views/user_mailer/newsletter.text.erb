@@ -4,7 +4,12 @@ Hi <%= @user.username %>
 
 <% @categories.each do |category| %>
   <%= category.name %>
+
   <% category.events.send("#{@plan}").each do |event| %>
-    <%= event.title %> - <%= pretty_date(event.date) %>
+    <%= event.title %>
+    <%= event.url %>
+    <%= event.description %>
+    <%= event.location %>
+
   <% end %>
 <% end %>
