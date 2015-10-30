@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :signed_in
 
   MESSAGES = {
-    successful_sign_out: 'You have signed out.',
-    successful_sign_in: 'You have successfully signed in.',
-    successful_save: 'Changes successfully saved.'
+    successful_sign_out: 'You have signed out',
+    successful_sign_in: 'You have signed in',
+    successful_save: 'Changes saved'
   }
 
   ERRORS = {
