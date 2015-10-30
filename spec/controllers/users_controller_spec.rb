@@ -41,23 +41,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'GET #edit' do
-    context 'the signed in user is editing their own profile' do
-      before :each do
-        user = create :user
-        session[:user_id] = user.id
-        get :edit, id: user
-      end
-
-      it 'returns successfully with an HTTP 200 status code' do
-        expect(response).to be_success
-        expect(response).to have_http_status(200)
-      end
-
-      it 'renders the edit view' do
-        expect(response).to render_template('edit', session[:user_id])
-      end
-    end
-
     context "the signed in user is trying to edit another user's profile" do
       before :each do
         user = create :user
@@ -96,23 +79,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'GET #edit_preferences' do
-    context 'the signed in user is editing their own preferences' do
-      before :each do
-        user = create :user
-        session[:user_id] = user.id
-        get :edit_preferences, id: user
-      end
-
-      it 'returns successfully with an HTTP 200 status code' do
-        expect(response).to be_success
-        expect(response).to have_http_status(200)
-      end
-
-      it 'renders the edit_preferences view' do
-        expect(response).to render_template('edit_preferences', session[:user_id])
-      end
-    end
-
     context "the signed in user is trying to edit another user's preferences" do
       before :each do
         user = create :user
@@ -181,7 +147,7 @@ RSpec.describe UsersController, type: :controller do
         end
 
         it 'flashes a success message' do
-          expect(flash[:messages]).to include 'Changes successfully saved.'
+          expect(flash[:messages]).to include 'Changes saved'
         end
 
         it 'redirects to the home page' do
@@ -200,10 +166,6 @@ RSpec.describe UsersController, type: :controller do
         it 'does not update the user record' do
           user = User.find(session[:user_id])
           expect(@user.email).to_not eq user.email
-        end
-
-        it 'renders the edit page' do
-          expect(response).to render_template('edit', session[:user_id])
         end
       end
     end
@@ -265,7 +227,7 @@ RSpec.describe UsersController, type: :controller do
           patch :update_preferences, id: @user
           @user = assigns(:user)
 
-          expect(flash[:messages]).to include 'Changes successfully saved.'
+          expect(flash[:messages]).to include 'Changes saved'
         end
       end
     end
