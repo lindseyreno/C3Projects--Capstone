@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
+      # UserMailer.account_activation(@user).deliver_now
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       flash.now[:errors] = ERRORS[:unsuccessful_sign_up]
@@ -20,11 +21,10 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:messages] = MESSAGES[:successful_save]
-      redirect_to root_path
     else
       flash[:messages] = MESSAGES[:unsuccessful_save]
-      redirect_to root_path
     end
+    redirect_to root_path
     # TODO: make this so you update one part at a time if the user is signed in
   end
 

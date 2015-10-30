@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   patch '/users/:id/update_preferences', to: 'users#update_preferences', as: 'update_preferences'
 
   resources :users
-  resources :account_activations, only: [:edit]
+  # resources :account_activations, only: [:edit]
   resources :categories, only: [:show]
 end
