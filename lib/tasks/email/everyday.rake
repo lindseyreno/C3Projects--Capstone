@@ -3,8 +3,7 @@ namespace :email do
   task everyday: :environment do
     users = User.everyday
     users.each do |user|
-      UserMailer.newsletter(user, "everyday").deliver_now
-      puts user.username
+      UserMailer.newsletter(user, 'everyday').deliver_now
     end
   end
 end

@@ -3,7 +3,7 @@ namespace :email do
   task two_weeks: :environment do
     users = User.two_weeks
     users.each do |user|
-      UserMailer.newsletter(user, "two_weeks").deliver_now
+      UserMailer.newsletter(user, 'two_weeks').deliver_now
     end
   end
 end
