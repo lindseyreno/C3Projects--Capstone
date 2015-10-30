@@ -153,8 +153,8 @@ end
                email: email,
                password:              password,
                password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
+              #  activated: true,
+              #  activated_at: Time.zone.now,
                schedule_id: schedule)
 end
 
