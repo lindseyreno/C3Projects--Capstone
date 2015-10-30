@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   before_action :require_sign_in, only: [:edit, :update, :edit_preferences, :update_preferences]
   before_action :set_user, only: [:edit, :update, :edit_preferences, :update_preferences]
 
-  # def new
-  #   @user = User.new
-  # end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -17,7 +13,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+  end
 
   def update
     if @user.update_attributes(user_params)
@@ -25,7 +23,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:messages] = MESSAGES[:unsuccessful_save]
-      render :edit
+      redirect_to root_path
     end
     # TODO: make this so you update one part at a time if the user is signed in
   end
