@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Schedule, type: :model do
-  describe "model validations" do
-    describe "name validations" do
-      it "requires a name" do
+  describe 'model validations' do
+    describe 'name validations' do
+      it 'requires a name' do
         schedule = build :schedule, name: nil
 
         schedule.valid?
@@ -11,8 +11,8 @@ RSpec.describe Schedule, type: :model do
       end
     end
 
-    describe "description validations" do
-      it "requires a description" do
+    describe 'description validations' do
+      it 'requires a description' do
         schedule = build :schedule, description: nil
 
         schedule.valid?

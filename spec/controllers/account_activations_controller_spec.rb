@@ -6,19 +6,19 @@ RSpec.describe AccountActivationsController, type: :controller do
       @user = create :user, activated: false, activated_at: nil
     end
 
-    it "does not activate with invalid token" do
-      get :edit, id: "invalid", email: @user.email
+    it 'does not activate with invalid token' do
+      get :edit, id: 'invalid', email: @user.email
       expect(@user.activated?).to be(false)
       expect(session[:user_id]).to be(nil)
     end
 
-    it "does not activate with valid token and invalid email" do
+    it 'does not activate with valid token and invalid email' do
       get :edit, id: @user.activation_token, email: 'wrong'
       expect(@user.activated?).to be(false)
       expect(session[:user_id]).to be(nil)
     end
 
-    it "activates user with valid token and valid email" do
+    it 'activates user with valid token and valid email' do
       get :edit, id: @user.activation_token, email: @user.email
       expect(session[:user_id])
       expect(@user.activated?)

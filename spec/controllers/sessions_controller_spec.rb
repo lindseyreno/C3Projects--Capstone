@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  describe "POST #create" do
-    it "without login, session[:user_id] is nil" do
+  describe 'POST #create' do
+    it 'without login, session[:user_id] is nil' do
       create :user
 
       expect(session[:user_id]).to be nil
     end
 
-    context "invalid user params" do
+    context 'invalid user params' do
       let(:invalid_user_sign_in_params) { { session: { username: 'sam', password: 'password' } } }
 
       before :each do
@@ -16,20 +16,20 @@ RSpec.describe SessionsController, type: :controller do
         post :create, invalid_user_sign_in_params
       end
 
-      it "does not set session[:user_id]" do
+      it 'does not set session[:user_id]' do
         expect(session[:user_id]).to be nil
       end
 
-      it "flashes error message" do
-        expect(flash[:errors]).to include("There was a problem signing in. Please try again.")
+      it 'flashes error message' do
+        expect(flash[:errors]).to include('There was a problem signing in. Please try again.')
       end
 
-      it "redirects to home page" do
+      it 'redirects to home page' do
         expect(response).to redirect_to(root_path)
       end
     end
 
-    context "valid user params and user is not activated" do
+    context 'valid user params and user is not activated' do
       let(:user_sign_in_params) { { session: { username: 'sam', password: 'user_password' } } }
 
       before :each do
@@ -37,20 +37,20 @@ RSpec.describe SessionsController, type: :controller do
         post :create, user_sign_in_params
       end
 
-      it "does not set session[:user_id]" do
+      it 'does not set session[:user_id]' do
         expect(session[:user_id]).to be nil
       end
 
-      it "flashes error message" do
-        expect(flash[:errors]).to include("Account not activated. Check your email for the activation link.")
+      it 'flashes error message' do
+        expect(flash[:errors]).to include('Account not activated. Check your email for the activation link.')
       end
 
-      it "redirects to the home page" do
+      it 'redirects to the home page' do
         expect(response).to redirect_to(root_path)
       end
     end
 
-    context "valid user params and user is activated" do
+    context 'valid user params and user is activated' do
       let(:user_sign_in_params) { { session: { username: 'sam', password: 'user_password' } } }
 
       before :each do
@@ -58,7 +58,7 @@ RSpec.describe SessionsController, type: :controller do
         post :create, user_sign_in_params
       end
 
-      it "sets the user" do
+      it 'sets the user' do
         expect(assigns(:user)).to eq @user
       end
 
@@ -66,11 +66,11 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:user_id]).to eq @user.id
       end
 
-      it "flashes message" do
+      it 'flashes message' do
         expect(flash[:messages]).to include('You have successfully signed in.')
       end
 
-      it "redirects to the home page" do
+      it 'redirects to the home page' do
         expect(response).to redirect_to(root_path)
       end
     end
