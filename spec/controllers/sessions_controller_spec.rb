@@ -67,7 +67,7 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       it 'flashes message' do
-        expect(flash[:messages]).to include('You have successfully signed in.')
+        expect(flash[:messages]).to include('You have signed in')
       end
 
       it 'redirects to the home page' do
@@ -88,7 +88,7 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it 'flashes message' do
-      expect(flash[:messages]).to include('You have signed out.')
+      expect(flash[:messages]).to include('You have signed out')
     end
 
     it 'redirects to the home page'do
