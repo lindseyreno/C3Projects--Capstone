@@ -133,7 +133,7 @@ schedules = [
   #   :description => 'Contains events for the next two weeks, sent on Sunday every other week.'
   # },
   { :name => 'This Month',
-    :description => 'Contains events for the month, sent on the first day of the month.'
+    :description => 'Contains events for the next month, sent on the last day of the month.'
   },
   { :name => 'None',
     :description => 'The newsletter is not sent.'
