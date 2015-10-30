@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     if @user && @user.authenticate(params[:session][:password])
       # if @user.activated?
-      #   session[:user_id] = @user.id
+        session[:user_id] = @user.id
         flash[:messages] = MESSAGES[:successful_sign_in]
       # else
       #   flash[:errors] = ERRORS[:unactivated_account]
