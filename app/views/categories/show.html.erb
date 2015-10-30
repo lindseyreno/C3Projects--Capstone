@@ -1,0 +1,61 @@
+<div class="container category">
+  <h3><%= @category.name %></h3>
+
+<p></p>
+  <h4><%= pretty_date(Date.today.to_s) %></h4>
+  <ul>
+    <% @category.events.todays_events.each do |event| %>
+      <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+      <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+
+  <h4><%= pretty_date((Date.today + 1.day).to_s) %></h4>
+  <ul>
+    <% @category.events.everyday.each do |event| %>
+      <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+      <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+
+  <h4><%= pretty_date((Date.today + 2.days).to_s) %></h4>
+  <ul>
+    <% @category.events.today_plus2.each do |event| %>
+      <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+      <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+
+  <h4><%= pretty_date((Date.today + 3.days).to_s) %></h4>
+  <ul>
+    <% @category.events.today_plus3.each do |event| %>
+    <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+    <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+
+  <h4><%= pretty_date((Date.today + 4.days).to_s) %></h4>
+  <ul>
+    <% @category.events.today_plus4.each do |event| %>
+    <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+    <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+  <h4><%= pretty_date((Date.today + 5.days).to_s) %></h4>
+
+  <ul>
+    <% @category.events.today_plus5.each do |event| %>
+    <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+    <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+
+  <h4><%= pretty_date((Date.today + 6.days).to_s) %></h4>
+  <ul>
+    <% @category.events.today_plus6.each do |event| %>
+    <li><a href="#" data-toggle="modal" data-target="#modal-<%= event.id %>"><%= event.title %></a></li>
+    <%= render partial: 'shared/event_modal' %>
+    <% end %>
+  </ul>
+
+</div>
